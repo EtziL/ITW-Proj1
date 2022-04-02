@@ -1,0 +1,842 @@
+@charset "UTF-8";
+/*
+ * Login: xetzle00
+ *
+ * Některé nastavené hodnoty nemusí sedět se zadáním - nastavoval jsem, aby se výsledek více přiblížil předloze
+ * Validátor vyhazuje warningy kvůli ms a webkitu -> tyto styly ale pomáhají zajistit větší kompatibilitu mezi prohlížeči.
+ */
+
+
+/* Obecné styly stejné pro většinu / všechny elementy */
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: PT Sans;
+  text-decoration: none;
+  scroll-behavior: smooth;
+}
+
+/* Font Loga */
+#logo a {
+  font-family: Special Elite;
+}
+
+/* Natstavení velikosti jednotlivých nadpísů */
+h2 {
+  font-size: 32px;
+}
+
+.content > h2 {
+  font-size: 40px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+/* Nastavení omezení na maximální a minimální šířku */
+.content {
+  max-width: 1200px;
+  min-width: 728px;
+}
+
+/* odsazení od bočních stran, aby content nebyl nalepen hned na browser a "neutíkal" pryč */
+.content > * {
+  margin: 0 20px;
+}
+
+/* Nastavení sekcí dle zadání: */
+section {
+  padding: 60px 0 80px 0;
+}
+
+/* Při obrazovce širší jak 1200px se content rovná na střed */
+@media only screen and (min-width: 1200px) {
+  .content, main {
+    margin: 0 auto;
+  }
+}
+
+/* Stylování headeru - výška, pozadí*/
+header {
+  height: 100vh;
+  min-height: 400px;
+  background-image: url("../img/header.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/* Stylování layoutu header-menu */
+header #header-menu {
+  padding-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+/* horní elementy header-menu */
+header #header-menu :nth-child(1) {
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+}
+
+header #header-menu :nth-child(2) {
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+  text-align: right;
+}
+
+/* Nastavení barvy textu a hover animace u kontaktů */
+header #header-menu :nth-child(2) span, header #header-menu :nth-child(2) a {
+  color: #898989;
+}
+
+header #header-menu :nth-child(2) span:hover, header #header-menu :nth-child(2) a:hover {
+  color: white;
+}
+
+/* Ikona u kontaktu */
+header #header-menu :nth-child(2) i {
+  color: steelblue;
+  margin: 0 5px 0 10px;
+}
+
+/* Nastavení dvou spodních elementů - přehození pořadí přes order:2 */
+header #header-menu :nth-child(3) {
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: right;
+  font-size: 28px;
+}
+
+/* Ikony sociálních sítí a jejich hover */
+header #header-menu :nth-child(3) i {
+  color: steelblue;
+  width: 28px;
+  height: 28px;
+}
+
+header #header-menu :nth-child(3) i:hover {
+  color: white;
+}
+
+/* stylování navigace */
+header #header-menu :nth-child(4) ul {
+  margin-top: 10px;
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/* Nastylování li - border, kapitálky, hover a další dle zadání */
+header #header-menu :nth-child(4) ul li {
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  padding: 5px 15px;
+  text-transform: uppercase;
+  border: transparent 1px solid;
+  -webkit-transition: border .5s ease;
+  transition: border .5s ease;
+}
+
+header #header-menu :nth-child(4) ul li a {
+  color: #bfbfbf;
+}
+
+header #header-menu :nth-child(4) ul li:hover {
+  border: white 1px solid;
+  -webkit-transition: border 0.5s ease;
+  transition: border 0.5s ease;
+}
+
+/* Styling HuntYouDown loga */
+header #header-menu #logo * {
+  font-size: 25px;
+  color: steelblue;
+}
+
+header #header-menu #logo * :first-of-type {
+  margin-right: 10px;
+}
+
+header #header-menu #logo *:hover {
+  color: white;
+}
+
+/* Styling header-title -- H1 s Tlačítkem by měl být ve 2/3 obrazovky - 53% mi vycházelo tak nějak nejlépe esteticky */
+header #header-title {
+  position: absolute;
+  top: 53%;
+}
+
+/* Nadpis Hero sekce */
+header #header-title h1 {
+  font-size: 64px;
+  color: white;
+  margin: 0 0 60px 20px;
+}
+
+/* Styling Get Started tlačítka */
+header #header-title #get-started {
+  font-size: 18px;
+  line-height: 1.7;
+  padding: 20px;
+  border: 2px solid #4d4d4d;
+  border-radius: 15px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: transparent;
+  -webkit-transition: background-color .5s ease;
+  transition: background-color .5s ease;
+}
+
+header #header-title #get-started a {
+  color: #898989;
+}
+
+header #header-title #get-started:hover {
+  background-color: steelblue;
+  -webkit-transition: background-color .5s ease;
+  transition: background-color .5s ease;
+}
+
+header #header-title #get-started:hover a {
+  color: white;
+}
+
+/* Styling main - services */
+/* Styling nadpisu */
+main #services h2 {
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* styling textu v odstavcích */
+main #services p {
+  font-size: 18px;
+  line-height: 1.7;
+  text-align: center;
+  color: #898989;
+}
+
+/* Jednotlivé "karty" vytvořené přes grid */
+/* Není problém přidat další elementy tohoto typu */
+main #services .content > div {
+  margin: 50px auto;
+  display: -ms-grid;
+  display: grid;
+  width: 640px;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  -ms-grid-rows: (1fr)[2];
+      grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 40px;
+  grid-row-gap: 40px;
+}
+
+main #services .content > div .services-column {
+  -webkit-box-shadow: 0 0 10px 0 #bfbfbf;
+          box-shadow: 0 0 10px 0 #bfbfbf;
+  border-radius: 5px;
+  text-align: center;
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
+}
+
+main #services .content > div .services-column .services-card {
+  padding: 20px;
+}
+
+/* Styling chlívku s ikonou */
+main #services .content > div .services-column .services-card > div {
+  border: 1px solid steelblue;
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 0 auto 40px auto;
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+
+
+main #services .content > div .services-column .services-card > div img {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* Schování druhé ikony, kterou používáme při hoveru */
+main #services .content > div .services-column .services-card > div img:nth-of-type(2) {
+  visibility: hidden;
+}
+
+main #services .content > div .services-column .services-card p {
+  color: #bfbfbf;
+  font-size: 14px;
+}
+
+main #services .content > div .services-column:hover {
+  -webkit-box-shadow: 0 0 10px 0 steelblue;
+          box-shadow: 0 0 10px 0 steelblue;
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
+}
+
+main #services .content > div .services-column:hover h3 {
+  color: steelblue;
+}
+
+main #services .content > div .services-column:hover .services-card > div {
+  background-color: steelblue;
+}
+
+main #services .content > div .services-column:hover .services-card > div img {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* Změna visibility při hoveru */
+main #services .content > div .services-column:hover .services-card > div img:nth-of-type(2) {
+  visibility: visible;
+}
+
+main #services .content > div .services-column:hover .services-card > div img:nth-of-type(1) {
+  visibility: hidden;
+}
+
+/* Styling main-about us  */
+/* Změna pozadí */
+main #about {
+  background-color: #F7F7F7;
+  width: 100%;
+}
+
+main #about .about-item {
+  margin-bottom: 40px;
+}
+
+main #about .about-item h2 {
+  margin-bottom: 40px;
+}
+
+/* Styling pro sudé a liché elementy - přidání dalšího elementu není problém */
+/* Pro vyřešení celé sekce stačí v podstatě jen float  */
+main #about .about-item:nth-of-type(odd) p {
+  font-size: 18px;
+  line-height: 1.7;
+  text-align: justify;
+  color: #898989;
+}
+
+main #about .about-item:nth-of-type(odd) img {
+  width: 40%;
+  float: left;
+  margin-right: 80px;
+  margin-bottom: 40px;
+  -webkit-transition: width .5s ease;
+  transition: width .5s ease;
+}
+
+/* Změna velikosti obrázku při hoveru na něj */
+main #about .about-item:nth-of-type(odd) img:hover {
+  width: 50%;
+  -webkit-transition: width .5s ease;
+  transition: width .5s ease;
+}
+
+main #about .about-item:nth-of-type(even) p {
+  font-size: 18px;
+  line-height: 1.7;
+  text-align: justify;
+  color: #898989;
+}
+
+main #about .about-item:nth-of-type(even) img {
+  width: 40%;
+  float: right;
+  margin-left: 80px;
+  margin-bottom: 40px;
+  -webkit-transition: width .5s ease;
+  transition: width .5s ease;
+}
+
+/* Změna velikosti obrázku při hoveru na něj */
+main #about .about-item:nth-of-type(even) img:hover {
+  width: 50%;
+  -webkit-transition: width .5s ease;
+  transition: width .5s ease;
+}
+
+/* Styling main-team */
+/* čára pod sekcí z předlohy - opakuje se na vícero místech*/
+main #team {
+  border-bottom: dashed 1px black;
+}
+
+main #team .content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+/* Stylování nadpisu */
+main #team h2 {
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 40px;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+}
+
+/* Stylování karty */
+main #team .team-card {
+  text-align: center;
+  margin-right: 20px;
+  margin-left: 0;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 10px 0 #bfbfbf;
+          box-shadow: 0 0 10px 0 #bfbfbf;
+  -webkit-box-flex: 0.25;
+      -ms-flex: 0.25;
+          flex: 0.25;
+}
+
+main #team .team-card h3 {
+  margin-top: 40px;
+  margin-bottom: 5px;
+}
+
+main #team .team-card h4 {
+  color: #898989;
+}
+
+main #team .team-card p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #bfbfbf;
+  padding: 0 15px 15px 15px;
+}
+
+/* Napravení marginu */
+main #team .team-card:first-of-type {
+  margin-left: 20px;
+}
+
+main #team .team-card:last-of-type {
+  margin-right: 20px;
+}
+
+/* Stylování obrázku karty */
+main #team .team-card img {
+  width: 100%;
+}
+
+/* Změna barvy stínu a jména při hoveru */
+main #team .team-card:hover {
+  -webkit-box-shadow: 0 0 10px 0 steelblue;
+          box-shadow: 0 0 10px 0 steelblue;
+}
+
+main #team .team-card:hover h3 {
+  color: steelblue;
+}
+
+/* Styling main-stats */
+main #stats .content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+/* Styling jednotlivých kartiček */
+main #stats .content .stats-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+  -webkit-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
+  max-width: 300px;
+  height: 110px;
+  text-align: center;
+  background-color: #4D4D4D;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+/* Styling textu čísel */
+main #stats .content .stats-card h3 {
+  color: white;
+  margin: auto auto;
+}
+
+/* Styling ikonky nad kartičkou */
+/* Validátor vyhazuje warning (stejná barva u borderu a backgroundu) */
+/* Bez nastavení obou jsou ikony narušeny jinou barvou */
+main #stats .content .stats-card i {
+  font-size: 32px;
+  color: steelblue;
+  position: absolute;
+  top: -30px;
+  right: 0;
+  left: 0;
+  background-color: white;
+  border: 10px solid white;
+  width: 50px;
+  border-radius: 100%;
+  margin: 0 auto;
+}
+
+/* Text na kartě */
+main #stats .content .stats-card p {
+  font-size: 14px;
+  color: #bfbfbf;
+}
+
+/* Změna barvy pozadí při hoveru */
+main #stats .content .stats-card:hover {
+  background-color: steelblue;
+}
+
+/* Styling main-price */
+/* Změna pozadí */
+main #price {
+  background-color: #F7F7F7;
+}
+
+/* Nadpis na střed a jeho dolní margin*/
+main #price .content {
+  text-align: center;
+}
+
+main #price .content h2 {
+  margin-bottom: 60px;
+}
+
+/* stylování tabulky dle zadání */
+main #price .content table {
+  width: 80%;
+  margin: 0 auto;
+  text-align: left;
+  border-collapse: separate;
+  border-spacing: 0 20px;
+}
+
+main #price .content table td, main #price .content table th {
+  padding: 20px;
+}
+
+main #price .content table tbody tr td {
+  vertical-align: middle;
+  height: 100px;
+  border-top: 1px dotted steelblue;
+  border-bottom: 1px dotted steelblue;
+  color: #898989;
+}
+
+main #price .content table tbody tr td ul li:first-of-type {
+  list-style: none;
+  font-weight: bolder;
+}
+
+main #price .content table tbody tr td ul li {
+  list-style-position: inside;
+  line-height: 1.7;
+}
+
+main #price .content table tbody tr td button {
+  padding: 20px;
+  background-color: #F7F7F7;
+  border-width: 1px;
+  border-color: steelblue;
+  border-radius: 5px;
+  color: black;
+}
+
+/* Hover animace */
+main #price .content table tbody tr:hover {
+  background-color: white;
+  border-radius: 5px;
+}
+
+main #price .content table tbody tr:hover td {
+  color: steelblue;
+}
+
+main #price .content table tbody tr:hover button {
+  color: black;
+}
+
+main #price .content table tbody tr:hover button:hover {
+  color: white;
+  background-color: steelblue;
+}
+
+/* Styling main-refs */
+main #refs {
+  border-bottom: dashed 1px black;
+}
+
+main #refs .content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+main #refs .content .refs-card {
+  width: 300px;
+  max-width: 400px;
+}
+
+/* Stylování citace */
+main #refs .content .refs-card blockquote {
+  background-color: #4d4d4d;
+  padding: 30px 20px 30px 50px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+main #refs .content .refs-card blockquote span {
+  color: white;
+  font-size: 14px;
+}
+
+/* Stylování velké uvozovky před textem citace */
+main #refs .content .refs-card blockquote::before {
+  content: "\"";
+  font-style: italic;
+  font-size: 110px;
+  position: absolute;
+  display: block;
+  color: steelblue;
+  top: 0;
+  left: 5px;
+}
+
+/* Trojúhleník pod citační bublinou */
+main #refs .content .refs-card blockquote::after {
+  content: " ";
+  position: absolute;
+  top: 100%;
+  left: 10%;
+  border: 10px solid;
+  border-color: #4d4d4d white white #4d4d4d;
+}
+
+main #refs .content .refs-card figure {
+  margin-top: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/* Styling fotky "recenzenta" */
+main #refs .content .refs-card figure img {
+  width: 60px;
+  border-radius: 50px;
+}
+
+main #refs .content .refs-card figure h3 {
+  display: inline-block;
+  font-size: 18px;
+  margin: auto 20px;
+  color: #898989;
+  font-weight: lighter;
+}
+
+/* Styling hover animací */
+main #refs .content .refs-card:hover blockquote {
+  background-color: steelblue;
+}
+
+main #refs .content .refs-card:hover blockquote::after {
+  background-color: steelblue;
+}
+
+main #refs .content .refs-card:hover blockquote::before {
+  color: white;
+}
+
+main #refs .content .refs-card:hover figure h3 {
+  color: steelblue;
+}
+
+main #contact .content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+main #contact .content h2 {
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+
+/* Stylování mapy dle zadání */
+main #contact .content #map {
+  height: 400px;
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  margin-right: 10px;
+}
+
+/* Stylování formuláře dle zadání */
+main #contact .content form {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  margin-left: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  min-width: 400px;
+}
+
+main #contact .content form input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid steelblue;
+  color: steelblue;
+  margin-bottom: 20px;
+  height: 50px;
+}
+
+main #contact .content form input:focus-visible {
+  outline: 2px solid green;
+}
+
+main #contact .content form input:first-of-type {
+  margin-right: 20px;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+}
+
+main #contact .content form input:nth-of-type(2) {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+}
+
+main #contact .content form input:nth-of-type(3) {
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+}
+
+/* Červený text při invalid inputu */
+main #contact .content form input:focus:invalid {
+  color: red;
+}
+
+main #contact .content form input::-webkit-input-placeholder {
+  font-size: 14px;
+  color: steelblue;
+}
+
+main #contact .content form input:-ms-input-placeholder {
+  font-size: 14px;
+  color: steelblue;
+}
+
+main #contact .content form input::-ms-input-placeholder {
+  font-size: 14px;
+  color: steelblue;
+}
+
+main #contact .content form input::placeholder {
+  font-size: 14px;
+  color: steelblue;
+}
+
+/* Stylování textarea inputu - zakázán resize (nebylo přímo dané v zadání, ale zamezíme tak rozbití layoutu) */
+main #contact .content form textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid steelblue;
+  color: steelblue;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+  margin-bottom: 20px;
+  resize: none;
+  height: 150px;
+}
+
+/* Zelený obrys při zakliknutí inputu */
+main #contact .content form textarea:focus-visible {
+  outline: 2px solid green;
+}
+
+/* styling a hover submit tlačítka */
+main #contact .content form #contact-submit {
+  width: 50%;
+  margin: 0 auto;
+  font-size: 14px;
+  color: white;
+  background-color: steelblue;
+  height: 50px;
+}
+
+main #contact .content form #contact-submit:hover {
+  background-color: green;
+}
+
+/* Styling footer */
+footer {
+  padding: 40px 0;
+  background-color: black;
+}
+
+footer span:first-of-type {
+  float: left;
+  color: #898989;
+}
+
+footer span:last-of-type {
+  float: right;
+}
+
+footer span:last-of-type a {
+  color: steelblue;
+}
